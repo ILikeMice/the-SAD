@@ -1,5 +1,5 @@
 {
-	"manifest_version": 2,
+	"manifest_version": 3,
 	"name": "...",
 	"version": "0.1.0",
 
@@ -9,5 +9,8 @@
 			"js": ["mod.js"],
 			"css": ["styles.css"]
 		}
-	]
+	],
+	"action": {
+		"default_popup": "popup.html"
+	}
 }
