@@ -1,21 +1,33 @@
-// import type { Message } from "../messages.ts";
+import type { Message } from "../messages.ts";
 import "./annoyances/history.ts";
 
-// const websocket = new WebSocket("ws://maze:8000");
-// const element = document.createElement("div");
+const websocket = new WebSocket("ws://localhost:8000");
+const element = document.createElement("div");
 
-// element.style.backgroundColor = "black";
-// element.style.position = "absolute";
-// element.style.inset = "0px";
+element.style.backgroundColor = "black";
+element.style.position = "fixed";
+element.style.inset = "0px";
+element.style.zIndex = "1000"
+element.style.pointerEvents = "none";
 
-// // document.body.append(element);
+let crank = 0;
 
-// console.log(element);
+document.body.append(element);
 
-// websocket.addEventListener("message", (event) => {
-// 	const message = JSON.parse(event.data) as Message;
+console.log(element);
 
-// 	if (message.type === "crank-message") {
-// 		element.style.opacity = `${message.value}`;
-// 	}
-// });
+websocket.addEventListener("message", (event) => {
+	const message = JSON.parse(event.data) as Message;
+    console.log(message)
+
+	if (message.type === "crank-message") {
+		crank += Number(message.value.toFixed(1));
+        
+        if (crank >= 1) {
+            crank = 1;
+            console.log("sets")
+        }
+        element.style.opacity = crank.toString();
+        console.log(crank)
+	}
+});
