@@ -1,0 +1,40 @@
+
+@font-face {
+    font-family: highfont;
+    src: url(https://highseas.hackclub.com/_next/static/media/0fc6f5e9d9c3e206-s.p.ttf) format("truetype");
+    font-display: swap
+}
+body, html {
+    width: 350px;
+    height: 150px;
+    font-family: highfont;
+
+    font-size: medium;
+    margin: 0;
+
+}
+
+body {
+    padding: 10px;
+    padding-left: 0;
+    background-color: #24bc9e;
+    border-radius: 20px;
+    color: whitesmoke;
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.cell {
+    height: 100%;
+
+    background-color: #149f75;
+    top: 0;
+
+    flex-grow: 1;
+
+    margin-left: 10px;
+    border-radius: 10px;
+    
+}
