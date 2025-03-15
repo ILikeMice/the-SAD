@@ -1,0 +1,1 @@
+import "./annoyances/scams.ts";

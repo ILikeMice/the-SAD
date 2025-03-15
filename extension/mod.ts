@@ -1,7 +1,5 @@
 // import type { Message } from "../messages.ts";
-import "./annoyances/history.ts";
-
-// const websocket = new WebSocket("ws://maze:8000");
+import("./imports.ts");
 // const element = document.createElement("div");
 
 // element.style.backgroundColor = "black";
