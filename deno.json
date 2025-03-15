@@ -1,0 +1,14 @@
+{
+	"compilerOptions": {
+		"lib": ["dom", "dom.iterable", "dom.asynciterable", "deno.ns"]
+	},
+
+	"fmt": {
+		"useTabs": true
+	},
+
+	"tasks": {
+		"backend": "deno serve --allow-net --watch backend/mod.ts",
+		"build-extension": "deno run -A --watch extension/build.ts"
+	}
+}
