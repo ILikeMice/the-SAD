@@ -14,6 +14,9 @@ element.style.zIndex = "1000"
 element.style.pointerEvents = "none";
 
 let crank = 0;
+let humidity = 0;
+let distance = null;
+let maxfontsize = 800;
 
 document.body.append(element);
 
@@ -32,5 +35,22 @@ websocket.addEventListener("message", (event) => {
         }
         element.style.opacity = crank.toString();
         console.log(crank)
+
 	}
+
+    if (message.type === "humidity-message") {
+        console.log("humidity");
+        humidity += Number(message.value.toFixed(1));
+        if (humidity >= 1) {
+            humidity = 1;
+        }
+        console.log(humidity)
+    }
+
+    if (message.type === "distance-message") {
+        console.log("distance");
+        distance = message.value;
+        document.body.style.fontSize = `${maxfontsize - (1000-distance*10)}px`;
+        console.log(distance);
+    }
 });
