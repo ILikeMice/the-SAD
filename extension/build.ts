@@ -5,6 +5,7 @@ const context = await esbuild.context({
 	plugins: [...denoPlugins()],
 	entryPoints: ["extension/mod.ts"],
 	bundle: true,
+	format: "esm",
 	outfile: "extension/mod.js",
 });
 

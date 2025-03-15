@@ -3,6 +3,9 @@ import "./annoyances/history.ts";
 
 const websocket = new WebSocket("ws://localhost:8000");
 const element = document.createElement("div");
+// import type { Message } from "../messages.ts";
+import("./imports.ts");
+// const element = document.createElement("div");
 
 element.style.backgroundColor = "black";
 element.style.position = "fixed";

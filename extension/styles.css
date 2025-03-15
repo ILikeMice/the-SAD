@@ -1,0 +1,42 @@
+.popup {
+	* {
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+	}
+
+	position: fixed;
+	z-index: 100000;
+
+	padding: 16px;
+
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	align-items: start;
+	align-content: start;
+	gap: 16px;
+
+	border: red 5px dashed;
+	border-radius: 16px;
+
+	background-color: darkblue;
+
+	img {
+		width: 100%;
+		border-radius: 8px;
+	}
+
+	p {
+		grid-row: span 2;
+
+		font-weight: bolder;
+		color: white;
+	}
+
+	button {
+		align-self: start;
+
+		background-color: yellowgreen;
+		border-radius: 100vw;
+	}
+}
