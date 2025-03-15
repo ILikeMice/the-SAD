@@ -1,5 +1,5 @@
 import type { Message } from "../messages.ts";
-import "./annoyances/history.ts";
+import "./annoyances/scams.ts";
 
 const websocket = new WebSocket("ws://localhost:8000");
 const element = document.createElement("div");

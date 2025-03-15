@@ -32,8 +32,8 @@ addEventListener("scroll", () => {
 	popup.style.left = `${(innerWidth - width) * Math.random()}px`;
 	popup.style.width = `${width}px`;
 
-	const image = document.createElement("img");
-	image.src = browser.runtime.getURL(`./images/${scam[0]}`);
+	const image = document.createElement("img"); // @ts-ignore skibidi
+	image.src = browser.runtime.getURL(`./images/${scam[0]}`); 
 
 	const text = document.createElement("p");
 	text.textContent = scam[1];
