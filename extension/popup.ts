@@ -4,22 +4,21 @@ const crank_meter = document.getElementById("crank");
 const humidity_meter = document.getElementById("humidity")! as HTMLMeterElement;
 // const distance_meter = document.getElementById("distance")! as HTMLMeterElement;
 
-chrome.runtime.onMessage.addListener((data) => {
-	const message = JSON.parse(data) as extension.Message;
-	console.log(message)
+// chrome.runtime.onMessage.addListener((data) => {
+// 	const message = JSON.parse(data) as extension.Message;
 
-	// Crank
-	if (message.type === "crank") {
-		document.getElementById("crank").value = 100 - message.value * 100;
-	}
+// 	// Crank
+// 	if (message.type === "crank") {
+// 		document.getElementById("crank").value = 100 - message.value * 100;
+// 	}
 
-	// Humidity
-	if (message.type === "humidity") {
-		document.getElementById("humidity").value = message.value;
-	}
+// 	// Humidity
+// 	if (message.type === "humidity") {
+// 		document.getElementById("humidity").value = message.value;
+// 	}
 
-	// Distance
-	if (message.type === "distance") {
-		document.getElementById("distance").value = message.value/10;
-	}
-});
+// 	// Distance
+// 	if (message.type === "distance") {
+// 		document.getElementById("distance").value = message.value / 10;
+// 	}
+// });

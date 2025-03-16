@@ -32,20 +32,19 @@ addEventListener("scroll", () => {
 
 	const scam = SCAMS[Math.floor(Math.random() * SCAMS.length)];
 
-	const image = element("img");
-	// @ts-ignore skibidi
-	image.src = chrome.runtime.getURL(`./images/${scam[0]}`);
+	const image = element("img", {
+		src: chrome.runtime.getURL(`./images/${scam[0]}`),
+	});
 
 	const text = element("p", undefined, [scam[1]]);
 	const button = element("button", undefined, ["Close forever"]);
 
 	button.addEventListener("click", () => {
 		popup.remove();
-		popup_used = false;
 		popups -= 1;
 	});
 
-	const popup = element("dialog", { class: "popup", open: "true" }, [
+	const popup = element("div", { class: "popup" }, [
 		image,
 		text,
 		button,

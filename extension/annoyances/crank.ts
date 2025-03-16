@@ -1,10 +1,6 @@
 import { element } from "../element.ts";
 
-const overlay = element("div", {
-	class: "overlay",
-	popover: "manual",
-	open: "true",
-});
+const overlay = element("div", { class: "overlay" });
 
 document.body.append(overlay);
 

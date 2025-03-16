@@ -41,16 +41,16 @@
     if (Math.random() < 0.95 || popups >= 5) return;
     popups += 1;
     const scam = SCAMS[Math.floor(Math.random() * SCAMS.length)];
-    const image = element("img");
-    image.src = chrome.runtime.getURL(`./images/${scam[0]}`);
+    const image = element("img", {
+      src: chrome.runtime.getURL(`./images/${scam[0]}`)
+    });
     const text = element("p", void 0, [scam[1]]);
     const button = element("button", void 0, ["Close forever"]);
     button.addEventListener("click", () => {
       popup.remove();
-      popup_used = false;
       popups -= 1;
     });
-    const popup = element("dialog", { class: "popup", open: "true" }, [
+    const popup = element("div", { class: "popup" }, [
       image,
       text,
       button
@@ -65,11 +65,7 @@
   });
 
   // extension/annoyances/crank.ts
-  var overlay = element("div", {
-    class: "overlay",
-    popover: "manual",
-    open: "true"
-  });
+  var overlay = element("div", { class: "overlay" });
   document.body.append(overlay);
   function crank(opacity) {
     console.log(opacity);
@@ -111,16 +107,19 @@
   }
 
   // extension/dom.ts
-  chrome.runtime.onMessage.addListener((data) => {
-    const message = JSON.parse(data);
-    if (message.type === "crank") {
-      crank(message.value);
-    }
-    if (message.type === "humidity") {
-      humidity(message.value);
-    }
-    if (message.type === "distance") {
-      distance(message.value);
-    }
+  addEventListener("DOMContentLoaded", () => {
+    chrome.runtime.onMessage.addListener((data) => {
+      const message = JSON.parse(data);
+      console.log("etauhoeush", message);
+      if (message.type === "crank") {
+        crank(message.value);
+      }
+      if (message.type === "humidity") {
+        humidity(message.value);
+      }
+      if (message.type === "distance") {
+        distance(message.value);
+      }
+    });
   });
 })();
