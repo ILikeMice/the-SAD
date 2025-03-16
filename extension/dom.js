@@ -42,7 +42,7 @@
     popup_used = true;
     const scam = SCAMS[Math.floor(Math.random() * SCAMS.length)];
     const image = element("img");
-    image.src = browser.runtime.getURL(`./images/${scam[0]}`);
+    image.src = chrome.runtime.getURL(`./images/${scam[0]}`);
     const text = element("p", void 0, [scam[1]]);
     const button = element("button", void 0, ["Close forever"]);
     button.addEventListener("click", () => {
@@ -105,7 +105,7 @@
   function distance(distance2) {
     const size = Math.min(Math.max(distance2, 2), 75) / 75 * 100;
     console.log("Using size:", size, "from distance:", distance2);
-    document.body.style.fontSize = `${size}%`;
+    document.body.style.fontSize = `${size / 2}px`;
   }
 
   // extension/dom.ts

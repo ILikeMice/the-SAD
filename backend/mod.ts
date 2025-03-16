@@ -1,4 +1,4 @@
-import type * as extension from "../extension/mod.ts";
+import type * as extension from "../extension/dom.ts";
 
 interface HardwareCrankMessage {
 	type: "crank";
@@ -41,7 +41,6 @@ let crank_led = false;
 const hardware_url = Deno.env.get("HARDWARE_URL")!;
 const hardware_websocket = new WebSocket(hardware_url);
 let extension_websocket: WebSocket;
-let previous_crank = 0;
 
 function add_hardware_event_listener() {
 	hardware_websocket.addEventListener("message", (event) => {
@@ -51,7 +50,7 @@ function add_hardware_event_listener() {
 
 		// Crank
 		if (message.type === "crank") {
-			crank -= Number((message.value/1000));
+			crank -= Number(message.value / 1000);
 			if (crank < 0) {
 				crank = 0;
 			}

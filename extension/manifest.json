@@ -12,7 +12,8 @@
 	],
 
 	"background": {
-		"scripts": ["mod.js"]
+		"service_worker": "mod.js",
+		"type": "module"
 	},
 
 	"action": {

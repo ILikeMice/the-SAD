@@ -20,8 +20,8 @@ const SCAMS = [
 	],
 	[
 		"scrapyard.png",
-		"Go to cloudflare (for absolutely free!!1!1!!!!), make a silly project, and get totally absolutely free prizes!! Somehow exists all around the world!!"
-	]
+		"Go to cloudflare (for absolutely free!!1!1!!!!), make a silly project, and get totally absolutely free prizes!! Somehow exists all around the world!!",
+	],
 ];
 
 let popup_used = false;
@@ -35,7 +35,7 @@ addEventListener("scroll", () => {
 
 	const image = element("img");
 	// @ts-ignore skibidi
-	image.src = browser.runtime.getURL(`./images/${scam[0]}`);
+	image.src = chrome.runtime.getURL(`./images/${scam[0]}`);
 
 	const text = element("p", undefined, [scam[1]]);
 	const button = element("button", undefined, ["Close forever"]);
