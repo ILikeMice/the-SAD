@@ -5,20 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="popup.css" rel="stylesheet">
+    <script src="popup.js"></script>
 </head>
 <body>
     <div class="cell">
         <span class="celltitle">Crank</span>
-        <meter class="cellprogress" min="0" max="100" value="10"></meter>
+        <meter class="cellprogress" id="crankprogress" min="0" max="100" value="10"></meter>
     </div>
     <div class="cell">
         <span class="celltitle">Humidity</span>
-        <meter class="cellprogress" min="0" max="100" value="10"></meter>
+        <meter class="cellprogress" id="humidityprogress" min="0" max="100" value="10"></meter>
         
     </div>
     <div class="cell">
         <span class="celltitle">Distance</span>
-        <meter class="cellprogress" min="0" max="100" value="24"></meter>
+        <meter class="cellprogress" id="distanceprogress" min="0" max="100" value="24"></meter>
     </div>
 </body>
 </html>

@@ -33,9 +33,12 @@ websocket.addEventListener("message", (event) => {
             crank = 1;
             console.log("sets")
         }
+        globalThis.localStorage.setItem("crank", crank.toString());
         element.style.opacity = crank.toString();
         console.log(crank)
-
+        chrome.runtime.sendMessage({ type: "crank", value: crank }, function(response) {
+            console.log(response.farewell);
+        });
 	}
 
     if (message.type === "humidity-message") {
@@ -45,6 +48,9 @@ websocket.addEventListener("message", (event) => {
             humidity = 1;
         }
         console.log(humidity)
+        chrome.runtime.sendMessage({ type: "crank", value: humidity }, function(response) {
+            console.log(response.farewell);
+        });
     }
 
     if (message.type === "distance-message") {
