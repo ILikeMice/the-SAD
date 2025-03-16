@@ -14,6 +14,14 @@ const SCAMS = [
 		"framework.jpeg",
 		"Why would you buy something that breaks forever, when you can have something that still breaks but can fix with work and money? Really? I need to know! I'm like dying here.",
 	],
+	[
+		"rpi.jpeg",
+		"Make a terminal app in #terminal-craft and get a free Raspberry Pi! Just kidding, we'll take your money and give you nothing. But you can still make a terminal app.",
+	],
+	[
+		"scrapyard.png",
+		"Go to cloudflare (for absolutely free!!1!1!!!!), make a silly project, and get totally absolutely free prizes!! Somehow exists all around the world!!"
+	]
 ];
 
 let popup_used = false;
