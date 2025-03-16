@@ -15,7 +15,7 @@ class MessageType(enum.Enum):
     """Enum of message types"""
 
     CRANK = "crank"
-    CRANK_LED = "crank_led"
+    CRANK_LED = "crank-led"
     DISTANCE = "distance"
     HUMIDITY = "humidity"
 
@@ -37,6 +37,8 @@ async def handle_connection(websocket):
             try:
                 data = json.loads(message)
                 print(f"JSON data from client: {data}")
+                if data["type"] == MessageType.CRANK_LED.value:
+                    ser.write(b"1" if data["value"] else b"0")
 
             except json.JSONDecodeError:
                 print("Invalid JSON received from client")
