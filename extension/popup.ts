@@ -1,25 +1,25 @@
 import type * as extension from "./dom.ts";
 
-const crank_meter = document.getElementById("crank");
+const crank_meter = document.getElementById("crank")! as HTMLMeterElement;
 const humidity_meter = document.getElementById("humidity")! as HTMLMeterElement;
-// const distance_meter = document.getElementById("distance")! as HTMLMeterElement;
+const distance_meter = document.getElementById("distance")! as HTMLMeterElement;
 
+// @ts-ignore bit bot
 chrome.runtime.onMessage.addListener((data) => {
 	const message = JSON.parse(data) as extension.Message;
-	console.log(message)
 
 	// Crank
 	if (message.type === "crank") {
-		document.getElementById("crank").value = 100 - message.value * 100;
+		crank_meter.value = 100 - message.value * 100;
 	}
 
 	// Humidity
 	if (message.type === "humidity") {
-		document.getElementById("humidity").value = message.value;
+		humidity_meter.value = message.value;
 	}
 
 	// Distance
 	if (message.type === "distance") {
-		document.getElementById("distance").value = message.value/10;
+		distance_meter.value = message.value;
 	}
 });

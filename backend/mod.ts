@@ -35,15 +35,12 @@ let distance = 0;
 let crank_led = false;
 
 const hardware_url = Deno.env.get("HARDWARE_URL")!;
-console.log({ hardware_url });
 const hardware_websocket = new WebSocket(hardware_url);
 let extension_websocket: WebSocket;
 
 function add_hardware_event_listener() {
 	hardware_websocket.addEventListener("message", (event) => {
 		const message = JSON.parse(event.data) as HardwareMessage;
-
-		console.log({ crank });
 
 		// Crank
 		if (message.type === "crank") {
