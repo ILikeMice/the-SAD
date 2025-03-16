@@ -49,4 +49,6 @@
 	background-color: black;
 
 	pointer-events: none;
+
+	transition: 1s all linear;
 }
