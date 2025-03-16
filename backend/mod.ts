@@ -27,7 +27,7 @@ type HardwareMessage =
 
 /** Something */
 let crank_dirty = false;
-let crank = 0;
+let crank = 1;
 /** Percentage */
 let humidity_dirty = false;
 let humidity = 0;
@@ -51,13 +51,9 @@ function add_hardware_event_listener() {
 
 		// Crank
 		if (message.type === "crank") {
-			if (
-				message.value !== previous_crank &&
-				Math.abs(message.value - previous_crank) < 100
-			) {
-				crank_dirty = true;
-				crank = Math.max(0, crank - .1);
-				previous_crank = message.value;
+			crank -= Number((message.value/1000));
+			if (crank < 0) {
+				crank = 0;
 			}
 		}
 
