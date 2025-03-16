@@ -39,5 +39,5 @@ void loop() {
   }
 
   Serial.println(String(humidity) + "," + String(crankVoltage) + "," + String(distance));
-  delay(100);
+  delay(500);
 }
