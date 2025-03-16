@@ -1,2 +1,3 @@
+.env
 extension/mod.js
 extension/popup.js
