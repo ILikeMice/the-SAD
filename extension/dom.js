@@ -105,9 +105,9 @@
 
   // extension/annoyances/distance.ts
   function distance(distance2) {
-    const size = Math.min(Math.max(distance2, 2), 75) / 75 * 100;
+    const size = Math.min(Math.max(distance2, 2), 75);
     console.log("Using size:", size, "from distance:", distance2);
-    document.body.style.fontSize = `${size / 2}px`;
+    document.body.style.transform = "scale(" + globalThis.screen.availHeight / (size / 4) + ")";
   }
 
   // extension/dom.ts
