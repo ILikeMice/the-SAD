@@ -13,9 +13,8 @@ dht DHT;
 const int crankPin = A0;
 const int trigPin = 10;
 const int echoPin = 9;
-const int potPin = A5;
 
-float duration, distance, humidity, temperature, crankVoltage, potValue;
+float duration, distance, humidity, crankVoltage;
 
 void setup() {
   pinMode(trigPin, OUTPUT);
@@ -34,10 +33,8 @@ void loop() {
   distance = (duration*.0343)/2;
   int chk = DHT.read22(DHT22_PIN);
   humidity = DHT.humidity;
-  temperature = DHT.temperature;
   crankVoltage = analogRead(crankPin);
-  potValue = analogRead(potPin);
 
-  Serial.print(String(humidity) + ", " + String(temperature) + ", " + String(crankVoltage) + ", " + String(distance) + ", " + String(potValue) + "\n");
+  Serial.println(String(humidity) + "," + String(crankVoltage) + "," + String(distance));
   delay(100);
 }
