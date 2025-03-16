@@ -3,9 +3,6 @@ import { crank } from "./annoyances/crank.ts";
 import { humidity } from "./annoyances/humidity.ts";
 import { distance } from "./annoyances/distance.ts";
 
-
-const cspHeaderNames = ["content-security-policy", "content-security-policy-report-only"];
-
 export interface CrankMessage {
 	type: "crank";
 	value: number;
@@ -42,18 +39,3 @@ browser.runtime.onMessage.addListener((data) => {
 		distance(message.value);
 	}
 });
-
-// @ts-ignore shut up
-function removeCSPHeaders(details: browser.webRequest.HttpHeaders): browser.webRequest.BlockingResponse {
-	// @ts-ignore shut up
-  	const filteredHeaders = details.responseHeaders?.filter(header => !cspHeaderNames.includes(header.name.toLowerCase()));
-	console.log("Filtered headers:", filteredHeaders);
-  	return { responseHeaders: filteredHeaders };
-}
-
-// @ts-ignore shut up
-browser.webRequest.onHeadersReceived.addListener(
-  	removeCSPHeaders,
-  	{ urls: ["<all_urls>"] },
-  	["blocking", "responseHeaders"]
-);
