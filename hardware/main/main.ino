@@ -1,11 +1,3 @@
-/*
- * HC-SR04 example sketch
- *
- * https://create.arduino.cc/projecthub/Isaac100/getting-started-with-the-hc-sr04-ultrasonic-sensor-036380
- *
- * by Isaac100
- */
-
 #include <dht.h>
 dht DHT;
 
@@ -39,7 +31,6 @@ void loop() {
   
   if (Serial.available()) {
     incomingByte = Serial.read();
-    Serial.println(incomingByte);
     if (incomingByte == 49.0) {
       digitalWrite(ledPin, HIGH);
     } else if (incomingByte == 48.0) {
