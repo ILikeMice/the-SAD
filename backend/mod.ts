@@ -123,7 +123,7 @@ function add_extension_event_sender() {
 			));
 		}
 
-		console.log("here");
+		
 		// Distance
 		if (distance_dirty) {
 			distance_dirty = false;

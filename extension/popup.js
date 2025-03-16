@@ -7,13 +7,13 @@
     const message = JSON.parse(data);
     console.log(message);
     if (message.type === "crank") {
-      crank_meter.value = message.value / 2e3;
+      document.getElementById("crank").value = message.value / 2e3;
     }
     if (message.type === "humidity") {
-      humidity_meter.value = message.value;
+      document.getElementById("humidity").value = message.value;
     }
     if (message.type === "distance") {
-      distance_meter.value = message.value;
+      document.getElementById("distance").value = message.value;
     }
   });
 })();
