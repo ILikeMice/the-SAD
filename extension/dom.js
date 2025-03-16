@@ -71,6 +71,7 @@
   });
   document.body.append(overlay);
   function crank(opacity) {
+    console.log(opacity);
     overlay.style.opacity = `${opacity}`;
   }
 

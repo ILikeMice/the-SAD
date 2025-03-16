@@ -8,7 +8,7 @@
 	},
 
 	"tasks": {
-		"backend": "deno serve -A --env --watch backend/mod.ts",
-		"build-extension": "deno run -A --env --watch extension/build.ts"
+		"backend": "deno serve --env -A --watch backend/mod.ts",
+		"build-extension": "deno run --env -A --watch extension/build.ts"
 	}
 }

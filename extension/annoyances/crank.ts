@@ -9,5 +9,6 @@ const overlay = element("div", {
 document.body.append(overlay);
 
 export function crank(opacity: number) {
+	console.log(opacity);
 	overlay.style.opacity = `${opacity}`;
 }
