@@ -40,3 +40,13 @@
 		border-radius: 100vw;
 	}
 }
+
+.overlay {
+	position: fixed;
+	inset: 0px;
+	z-index: 1000000;
+
+	background-color: black;
+
+	pointer-events: none;
+}

@@ -1,3 +1,5 @@
+import { element } from "../element.ts";
+
 const SCAMS = [
 	[
 		"credit-card.jpeg",
@@ -23,30 +25,29 @@ addEventListener("scroll", () => {
 
 	const scam = SCAMS[Math.floor(Math.random() * SCAMS.length)];
 
-	const popup = document.createElement("dialog");
-	popup.open = true;
-	popup.classList.add("popup");
+	const image = element("img");
+	// @ts-ignore skibidi
+	image.src = browser.runtime.getURL(`./images/${scam[0]}`);
 
-	const width = 300 + 300 * Math.random();
-
-	popup.style.left = `${(innerWidth - width) * Math.random()}px`;
-	popup.style.width = `${width}px`;
-
-	const image = document.createElement("img"); // @ts-ignore skibidi
-	image.src = browser.runtime.getURL(`./images/${scam[0]}`); 
-
-	const text = document.createElement("p");
-	text.textContent = scam[1];
-
-	const button = document.createElement("button");
-	button.textContent = "Close forever";
+	const text = element("p", undefined, [scam[1]]);
+	const button = element("button", undefined, ["Close forever"]);
 
 	button.addEventListener("click", () => {
 		popup.remove();
 		popup_used = false;
 	});
 
-	popup.append(image, text, button);
+	const popup = element("dialog", { class: "popup", open: "true" }, [
+		image,
+		text,
+		button,
+	]);
+
+	const width = 300 + 300 * Math.random();
+
+	popup.style.left = `${(innerWidth - width) * Math.random()}px`;
+	popup.style.width = `${width}px`;
+
 	document.body.append(popup);
 
 	requestAnimationFrame(() => {
