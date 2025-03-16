@@ -6,10 +6,14 @@
 	"content_scripts": [
 		{
 			"matches": ["<all_urls>"],
-			"js": ["mod.js"],
+			"js": ["dom.js"],
 			"css": ["styles.css"]
 		}
 	],
+
+	"background": {
+		"scripts": ["mod.js"]
+	},
 
 	"action": {
 		"default_popup": "popup.html"

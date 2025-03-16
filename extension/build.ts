@@ -3,10 +3,9 @@ import { denoPlugins } from "jsr:@luca/esbuild-deno-loader";
 
 const context = await esbuild.context({
 	plugins: [...denoPlugins()],
-	entryPoints: ["extension/mod.ts"],
 	bundle: true,
-	format: "esm",
-	outfile: "extension/mod.js",
+	entryPoints: ["extension/mod.ts", "extension/popup.ts"],
+	outdir: "extension",
 });
 
 await context.watch();

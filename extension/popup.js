@@ -1,12 +1,19 @@
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-    if (request.type === "crank") {
-        document.getElementById("crankprogress").value = request.value*100
-        sendResponse({ farewell: "goodbye from background script" });
-        console.log(request.value)
+(() => {
+  // extension/popup.ts
+  var websocket = new WebSocket("ws://localhost:8000");
+  var crank_meter = document.getElementById("crank");
+  var humidity_meter = document.getElementById("crank");
+  var distance_meter = document.getElementById("crank");
+  websocket.addEventListener("message", (event) => {
+    const message = JSON.parse(event.data);
+    if (message.type === "crank") {
+      crank_meter.value = message.value / 2e3;
     }
-    if (request.type === "humidity") {
-        document.getElementById("humidityprogress").value = request.value*100
-        sendResponse({ farewell: "goodbye from background script" });
-        console.log(request.value)
+    if (message.type === "humidity") {
+      humidity_meter.value = message.value;
     }
-});
+    if (message.type === "distance") {
+      distance_meter.value = message.value;
+    }
+  });
+})();

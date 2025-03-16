@@ -6,7 +6,7 @@
 	}
 
 	position: fixed;
-	z-index: 100000;
+	z-index: 1000000;
 
 	padding: 16px;
 
@@ -43,7 +43,7 @@
 
 .overlay {
 	position: fixed;
-	inset: 0px;
+	inset: 0;
 	z-index: 1000000;
 
 	background-color: black;
