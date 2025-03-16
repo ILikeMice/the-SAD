@@ -1,11 +1,13 @@
-import type * as extension from "./dom.ts";
+// import type * as extension from "./dom.ts";
 
-const crank_meter = document.getElementById("crank");
-const humidity_meter = document.getElementById("humidity")! as HTMLMeterElement;
-// const distance_meter = document.getElementById("distance")! as HTMLMeterElement;
+// const crank_meter = document.getElementById("crank");
+// const humidity_meter = document.getElementById("humidity")! as HTMLMeterElement;
+// // const distance_meter = document.getElementById("distance")! as HTMLMeterElement;
 
-// chrome.runtime.onMessage.addListener((data) => {
-// 	const message = JSON.parse(data) as extension.Message;
+// const websocket = new WebSocket("ws://localhost:8000");
+
+// websocket.addEventListener("message", (event) => {
+// 	const message = JSON.parse(event.data) as extension.Message;
 
 // 	// Crank
 // 	if (message.type === "crank") {

@@ -103,7 +103,6 @@
   function distance(distance2) {
     const size = Math.min(Math.max(distance2, 2), 75) / 75;
     console.log("Using size:", size, "from distance:", distance2);
-    document.body.style.fontSize = `${size}em`;
   }
 
   // extension/dom.ts
