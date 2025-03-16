@@ -98,6 +98,7 @@ function add_extension_event_sender() {
 			} satisfies extension.HumidityMessage,
 		));
 
+		
 		// Distance
 		extension_websocket.send(JSON.stringify(
 			{

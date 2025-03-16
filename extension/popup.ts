@@ -10,7 +10,7 @@ chrome.runtime.onMessage.addListener((data) => {
 
 	// Crank
 	if (message.type === "crank") {
-		crank_meter.value = message.value / 2000;
+		crank_meter.value = 100 - message.value * 100;
 	}
 
 	// Humidity
@@ -18,7 +18,7 @@ chrome.runtime.onMessage.addListener((data) => {
 		humidity_meter.value = message.value;
 	}
 
-	// Distance;
+	// Distance
 	if (message.type === "distance") {
 		distance_meter.value = message.value;
 	}

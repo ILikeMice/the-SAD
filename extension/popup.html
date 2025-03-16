@@ -5,22 +5,22 @@
 		<meta name="viewport" content="width=device-width" />
 		<title>The SAD (search annoyance department)</title>
 		<link rel="stylesheet" href="/popup.css" />
-		<script src="/popup.js"></script>
+		<script type="module" src="/popup.js"></script>
 	</head>
 
 	<body>
 		<article class="cell">
 			<h2>Crank</h2>
-			<meter id="crank" value="0"></meter>
+			<meter id="crank" value="0" min="0" max="100"></meter>
 		</article>
 
 		<article class="cell">
 			<h2>Humidity</h2>
-			<meter id="humidity" value="0"></meter>
+			<meter id="humidity" value="0" min="0" max="100"></meter>
 		</article>
 
 		<article class="cell">
-			<h2>Distance</h2>
+			<h1>Distance</h1>
 			<meter id="distance" value="0"></meter>
 		</article>
 	</body>
