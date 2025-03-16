@@ -10,7 +10,7 @@ chrome.runtime.onMessage.addListener((data) => {
 
 	// Crank
 	if (message.type === "crank") {
-		document.getElementById("crank").value = message.value / 2000;
+		document.getElementById("crank").value = message.value * 100;
 	}
 
 	// Humidity
@@ -19,7 +19,7 @@ chrome.runtime.onMessage.addListener((data) => {
 	}
 
 	// Distance
-	// if (message.type === "distance") {
-	// 	distance_meter.value = message.value;
-	// }
+	if (message.type === "distance") {
+		document.getElementById("distance").value = message.value/10;
+	}
 });
