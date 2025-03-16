@@ -1,12 +1,12 @@
-import type * as extension from "./mod.ts";
+import type * as extension from "./dom.ts";
 
-const websocket = new WebSocket("ws://localhost:8000");
 const crank_meter = document.getElementById("crank")! as HTMLMeterElement;
-const humidity_meter = document.getElementById("crank")! as HTMLMeterElement;
-const distance_meter = document.getElementById("crank")! as HTMLMeterElement;
+const humidity_meter = document.getElementById("humidity")! as HTMLMeterElement;
+const distance_meter = document.getElementById("distance")! as HTMLMeterElement;
 
-websocket.addEventListener("message", (event) => {
-	const message = JSON.parse(event.data) as extension.Message;
+chrome.runtime.onMessage.addListener((data) => {
+	const message = JSON.parse(data) as extension.Message;
+	console.log(message);
 
 	// Crank
 	if (message.type === "crank") {

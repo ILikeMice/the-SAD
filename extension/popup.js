@@ -1,11 +1,11 @@
 (() => {
   // extension/popup.ts
-  var websocket = new WebSocket("ws://localhost:8000");
   var crank_meter = document.getElementById("crank");
-  var humidity_meter = document.getElementById("crank");
-  var distance_meter = document.getElementById("crank");
-  websocket.addEventListener("message", (event) => {
-    const message = JSON.parse(event.data);
+  var humidity_meter = document.getElementById("humidity");
+  var distance_meter = document.getElementById("distance");
+  chrome.runtime.onMessage.addListener((data) => {
+    const message = JSON.parse(data);
+    console.log(message);
     if (message.type === "crank") {
       crank_meter.value = message.value / 2e3;
     }

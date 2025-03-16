@@ -6,6 +6,8 @@ At the SAD, we specialize in making your usage of the internet as ~~bad~~ great 
 
 Idk, figure it out urself or smth
 
+<sub><sup>To make it work, globaly disable CSP, the protection system, yes</sup></sub>
+
 ## License
 
 This project is licensed under the [MIT License][LICENSE].

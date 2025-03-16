@@ -21,7 +21,7 @@ export interface DistanceMessage {
 export type Message = CrankMessage | HumidityMessage | DistanceMessage;
 
 // @ts-ignore shut up
-browser.runtime.onMessage.addListener((data) => {
+chrome.runtime.onMessage.addListener((data) => {
 	const message = JSON.parse(data) as Message;
 
 	// Crank

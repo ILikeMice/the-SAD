@@ -47,7 +47,7 @@ function add_hardware_event_listener() {
 	hardware_websocket.addEventListener("message", (event) => {
 		const message = JSON.parse(event.data) as HardwareMessage;
 
-		// console.log({ crank });
+		console.log({ crank });
 
 		// Crank
 		if (message.type === "crank") {
