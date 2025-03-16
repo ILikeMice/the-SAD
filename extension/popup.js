@@ -6,7 +6,7 @@
     const message = JSON.parse(data);
     console.log(message);
     if (message.type === "crank") {
-      document.getElementById("crank").value = message.value * 100;
+      document.getElementById("crank").value = 100 - message.value * 100;
     }
     if (message.type === "humidity") {
       document.getElementById("humidity").value = message.value;
