@@ -24,12 +24,11 @@ const SCAMS = [
 	],
 ];
 
-let popup_used = false;
+let popups = 0;
 
 addEventListener("scroll", () => {
-	if (popup_used) return;
-
-	popup_used = true;
+	if (Math.random() < 0.95 || popups >= 5) return;
+	popups += 1;
 
 	const scam = SCAMS[Math.floor(Math.random() * SCAMS.length)];
 
@@ -43,6 +42,7 @@ addEventListener("scroll", () => {
 	button.addEventListener("click", () => {
 		popup.remove();
 		popup_used = false;
+		popups -= 1;
 	});
 
 	const popup = element("dialog", { class: "popup", open: "true" }, [

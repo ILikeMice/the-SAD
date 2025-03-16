@@ -36,10 +36,10 @@
       "Go to cloudflare (for absolutely free!!1!1!!!!), make a silly project, and get totally absolutely free prizes!! Somehow exists all around the world!!"
     ]
   ];
-  var popup_used = false;
+  var popups = 0;
   addEventListener("scroll", () => {
-    if (popup_used) return;
-    popup_used = true;
+    if (Math.random() < 0.95 || popups >= 5) return;
+    popups += 1;
     const scam = SCAMS[Math.floor(Math.random() * SCAMS.length)];
     const image = element("img");
     image.src = chrome.runtime.getURL(`./images/${scam[0]}`);
@@ -48,6 +48,7 @@
     button.addEventListener("click", () => {
       popup.remove();
       popup_used = false;
+      popups -= 1;
     });
     const popup = element("dialog", { class: "popup", open: "true" }, [
       image,
