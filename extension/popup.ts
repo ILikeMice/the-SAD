@@ -10,7 +10,7 @@ chrome.runtime.onMessage.addListener((data) => {
 
 	// Crank
 	if (message.type === "crank") {
-		document.getElementById("crank").value = message.value * 100;
+		document.getElementById("crank").value = 100 - message.value * 100;
 	}
 
 	// Humidity
