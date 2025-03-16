@@ -73,30 +73,8 @@
   }
 
   // extension/annoyances/humidity.ts
-  var tracked = [];
-  var freezing = false;
   function humidity(humidity2) {
-    if (humidity2 < 55 || freezing) {
-      return;
-    }
-    freezing = true;
-    const element2 = getRandomElement();
-    tracked.push(element2);
-    let i = 0;
-    const id = setInterval(() => {
-      i++;
-      element2.style.filter = `blur(${i * 3}px)`;
-      if (i >= 10) {
-        clearInterval(id);
-        freezing = false;
-        console.log("Unfroze");
-      }
-    }, 300);
-  }
-  function getRandomElement() {
-    const elements = document.body.querySelectorAll("*");
-    const randomElement = elements[Math.floor(Math.random() * elements.length)];
-    return randomElement;
+    console.log("Humidity:", humidity2);
   }
 
   // extension/annoyances/distance.ts
