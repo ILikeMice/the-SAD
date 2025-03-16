@@ -36,9 +36,12 @@ let crank_led = false;
 
 const hardware_url = Deno.env.get("HARDWARE_URL")!;
 const hardware_websocket = new WebSocket(hardware_url);
-let extension_websocket: WebSocket;
 
 function add_hardware_event_listener() {
+	hardware_websocket.addEventListener("open", () => {
+		console.log("Hardware websocket opened");
+	});
+
 	hardware_websocket.addEventListener("message", (event) => {
 		const message = JSON.parse(event.data) as HardwareMessage;
 
@@ -60,6 +63,10 @@ function add_hardware_event_listener() {
 			distance = message.value;
 		}
 	});
+
+	hardware_websocket.addEventListener("close", () => {
+		console.log("Hardware websocket closed");
+	});
 }
 
 setInterval(() => {
@@ -80,10 +87,20 @@ function add_hardware_event_sender() {
 	}, 1000);
 }
 
-function add_extension_event_sender() {
+function add_extension_event_listeners(socket: WebSocket) {
+	socket.addEventListener("open", () => {
+		console.log("Extension websocket opened");
+	});
+
+	socket.addEventListener("close", () => {
+		console.log("Extension websocket closed");
+	});
+}
+
+function add_extension_event_sender(socket: WebSocket) {
 	setInterval(() => {
 		// Crank
-		extension_websocket.send(JSON.stringify(
+		socket.send(JSON.stringify(
 			{
 				type: "crank",
 				value: crank,
@@ -91,16 +108,15 @@ function add_extension_event_sender() {
 		));
 
 		// Humidity
-		extension_websocket.send(JSON.stringify(
+		socket.send(JSON.stringify(
 			{
 				type: "humidity",
 				value: humidity,
 			} satisfies extension.HumidityMessage,
 		));
 
-		
 		// Distance
-		extension_websocket.send(JSON.stringify(
+		socket.send(JSON.stringify(
 			{
 				type: "distance",
 				value: distance,
@@ -108,14 +124,6 @@ function add_extension_event_sender() {
 		));
 	}, 1000);
 }
-
-hardware_websocket.addEventListener("open", () => {
-	console.log("Hardware websocket opened");
-});
-
-hardware_websocket.addEventListener("close", () => {
-	console.log("Hardware websocket closed");
-});
 
 add_hardware_event_listener();
 add_hardware_event_sender();
@@ -128,17 +136,8 @@ export default {
 
 		const { socket, response } = Deno.upgradeWebSocket(request);
 
-		extension_websocket = socket;
-
-		extension_websocket.addEventListener("open", () => {
-			console.log("Extension websocket opened");
-		});
-
-		extension_websocket.addEventListener("close", () => {
-			console.log("Extension websocket closed");
-		});
-
-		add_extension_event_sender();
+		add_extension_event_listeners(socket);
+		add_extension_event_sender(socket);
 
 		return response;
 	},
