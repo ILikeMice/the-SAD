@@ -107,19 +107,18 @@
   }
 
   // extension/dom.ts
-  addEventListener("DOMContentLoaded", () => {
-    chrome.runtime.onMessage.addListener((data) => {
-      const message = JSON.parse(data);
-      console.log("etauhoeush", message);
-      if (message.type === "crank") {
-        crank(message.value);
-      }
-      if (message.type === "humidity") {
-        humidity(message.value);
-      }
-      if (message.type === "distance") {
-        distance(message.value);
-      }
-    });
+  var websocket = new WebSocket("ws://localhost:8000");
+  websocket.addEventListener("message", (event) => {
+    const message = JSON.parse(event.data);
+    console.log("etauhoeush", message);
+    if (message.type === "crank") {
+      crank(message.value);
+    }
+    if (message.type === "humidity") {
+      humidity(message.value);
+    }
+    if (message.type === "distance") {
+      distance(message.value);
+    }
   });
 })();
