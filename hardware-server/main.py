@@ -5,6 +5,7 @@ import time
 
 import serial
 from websockets.asyncio.server import serve
+from websockets.exceptions import ConnectionClosedError
 
 SERVER = ("localhost", 3215)
 USB_PORT = "COM4"
@@ -39,6 +40,8 @@ async def handle_connection(websocket):
 
             except json.JSONDecodeError:
                 print("Invalid JSON received from client")
+    except ConnectionClosedError:
+        print("Client disconnected unexpectedly")
     finally:
         connected_clients.remove(websocket)
 
