@@ -20,4 +20,4 @@ Idk, figure it out urself or smth
 
 This project is licensed under the [MIT License](LICENSE).
 
-<sub>This project was made in the 24-hour (2 day) hackathon, [Lisbon](https://scrapyard.pt) [scrapyard](https://scrapyard.hackclub.com) satellite event, by a team of 3 people that didn't know eachother before the event (perhaps without any sleep)</sub>
+<sub>This project was made in a 24-hour (2 day) hackathon, the [Lisbon](https://scrapyard.pt) [scrapyard](https://scrapyard.hackclub.com) satellite event, by a team of 3 people that didn't know eachother before the event (perhaps without any sleep)</sub>
